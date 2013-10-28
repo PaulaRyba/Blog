@@ -1,5 +1,8 @@
-<%= link_to 'New Post', new_post_path %>
-    <% @posts.each do |post| %>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @category.name %><small><%= link_to 'Back', categories_path %> |<%= link_to 'Edit', edit_category_path(@category) %></small></h1>
+
+    <% @category.posts.each do |post| %>
     <article>
 
         <h3><%= link_to post.title, [post.category, post] %></h3>
@@ -12,6 +15,3 @@
       <hr />
 
     <% end %>
-
-
-

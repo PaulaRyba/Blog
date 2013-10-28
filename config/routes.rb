@@ -3,7 +3,10 @@ Blog::Application.routes.draw do
 
 
 
-  resources :posts
+  resources :categories do
+    resources :posts, :only => :show
+  end
+  resources :posts, :except => :show
   root "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
