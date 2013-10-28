@@ -18,6 +18,10 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
+  </div> 
+  <div class="field">
+    <%= f.label :category %><br>
+     <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {} %>
   </div>
   <div class="actions">
     <%= f.submit %>
