@@ -9,8 +9,14 @@ group :development do
 end
 
 group :production do
+  gem 'rails_12factor'
   gem 'pg'
 end
+
+# Add Foundation Here
+gem 'compass-rails' # you need this or you get an err
+gem 'zurb-foundation', '~> 4.0.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
