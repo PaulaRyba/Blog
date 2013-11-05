@@ -1,14 +1,23 @@
 Blog::Application.routes.draw do
 
-  resources :posts do
-    resources :comments
-  end
+  devise_for :users
 
-  resources :categories do
-    resources :posts, :only => :show
+  resources :categories, :only => [:show,:index] do
+    resources :posts, :only => :show do
+      resources :comments, :except => [:destroy]
+    end
   end
-  resources :posts, :except => :show
+  resources :posts, :only => :index 
   root "posts#index"
+
+  namespace :admin do
+    get  '/' => "main#index"
+    resources :posts do
+      resources :comments, :only => :destroy
+    end
+    resources :categories
+    
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
